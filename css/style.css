@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "myFirstFont";
+    src: url("/fonts/Game\ of\ Thrones.ttf");
+}
+
+
+body {
+    padding: 0;
+    margin: 0;
+    bottom: 0;
+    left: 0px;
+    background-image: url('/assets/site/mapblue.jpg');
+    background-size: cover;
+}
+
+.container {
+    float: left;
+}
+
+.left-side {
+    box-sizing: border-box;
+    width: 80%;
+}
+
+.portraits {
+    padding: 20px 0 0 15px;
+    height: 110px;
+    float: left;
+    width: 11%;
+    text-align: center
+}
+
+.names {
+    font-family: "myFirstFont";
+    font-size: 8px;
+    text-align: center;
+    align-content: center;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    margin: auto
+}
+
+.right-side {
+    background-color: rgb(69, 70, 70);
+    color: whitesmoke;
+    height: 800px;
+    width: 20%;
+}
+
+.pics {
+    height: 75px;
+}
+
+.pics:hover {
+    height: 100px;
+    border-radius: 100px;
+    box-shadow: 10px 10px 50px 15px rgb(151, 149, 149);
+}
+
+.title {
+    font-family: "myFirstFont";
+    text-align: center;
+    font-size: 18px;
+    margin-top: 40px
+}
+
+.search {
+    display: inline-block;
+    position: relative;
+    top: 650px;
+    left: 50px;
+}
+
+.button {
+    width: 20px;
+    position: absolute;
+    left: -35px;
+}

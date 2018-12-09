@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+    <div class="search">
+        <input class="search__input" type="text">
+        <button class="search__button">Keresés</button>
+    </div>
+<script>
+    // Ez a példa hasonló, mint a keresés amit meg kell írnotok.
+
+    // A függvény elvégzi a keresést
+    // Összehasonlítja a paraméterként kapott tömb elemeit a keresőmezőbe beírt értékkel
+    function search(arr){
+        var searchText = document.querySelector('.search .search__input').value.toLowerCase();
+        for(var key in arr){
+            if(arr[key].toLowerCase() === searchText) {
+                alert(`I found it! Index: ${key}, Data: ${arr[key]}`);
+                return;
+            }
+        }
+        alert('Element not found!');
+    }
+
+    // Itt a gombra varró Event listener, külön fügvénybe kiszervezve
+    // Paraméterként megkapja a tömböt, mert szükség lesz rá az addEventListenernél
+    function searchButtonEventListener(arr){
+        var element = document.querySelector('.search .search__button');
+        // Az addEventListener 2. paramétere egy callback function
+        // Ennek alapba nem tudunk paramétert adni, hiszen ha ezt írjuk: functionAmitÁtadunk(param)
+        // akkor ezzel meg is hívjuk a függvényt
+        // Ezért a callback nem csinál mást, mint hogy meghívja a kiszervezett search függvényt,
+        // aminek már át tudjuk adni a tömböt, hiszen eléri a felső scope-ban lévő változókat
+        element.addEventListener('click', function() { search(arr) });
+    }
+
+    // Mint a successAjax a háziban
+    function sample(){
+        // Itt egy tömb, ebbe szeretnék keresni
+        var arr = ['first', 'second', 'last'];
+        // hozzáadom az event listenert
+        searchButtonEventListener(arr);
+    }
+
+    sample();
+
+</script>
+</body>
+
+</html>
