@@ -18,6 +18,11 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   getPortraits(userDatas);
   console.log(userDatas);
 
+  var searchButton = document.querySelector('.button');
+  searchButton.addEventListener('click', function () {
+    searchCharacter(userDatas);
+  });
+
   // visszadja a console-ra annak a karakternek a nevét, akire kattintottunk
   var clickedPortait = document.querySelectorAll('.portraits');
   for (var i = 0; i < clickedPortait.length; i++) {
@@ -30,6 +35,7 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
     }
   }
 }
+
 
 getGameOfThronesCharacterDatas(
   './json/got.json',
@@ -87,9 +93,34 @@ function whichCharacter(arrayOfCharacters, nameOfCharacter) {
       showName(arrayOfCharacters[i].name);
       if (arrayOfCharacters[i].house) {
         showHouse(arrayOfCharacters[i].house);
-        showDesc(arrayOfCharacters[i].bio);
+      }
+      showDesc(arrayOfCharacters[i].bio);
+    }
+  }
+}
+
+//
+function searchCharacter(arrayOfCharacters) {
+  var searchInput = document.querySelector('.searchInput');
+  searchInput = searchInput.value.toLowerCase();
+  var found = '';
+  for (var i = 0; i < arrayOfCharacters.length; i++) {
+    if (arrayOfCharacters[i].name.toLowerCase().indexOf(searchInput) > -1) {
+      showDesc(arrayOfCharacters[i].bio);
+      showName(arrayOfCharacters[i].name);
+      if (arrayOfCharacters[i].picture) {
+        showPicture(arrayOfCharacters[i].picture, arrayOfCharacters[i].name);
+      } else {
+        showPicture('/assets/pictures/jorah.webp');
+      }
+      if (arrayOfCharacters[i].house) {
+        showHouse(arrayOfCharacters[i].house);
       }
     }
+  }
+  if (arrayOfCharacters[i].name.toLowerCase().indexOf(searchInput) === -1) {
+    alert('Character not found');
+    i = arrayOfCharacters.length;
   }
 }
 
