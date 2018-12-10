@@ -117,10 +117,9 @@ function searchCharacter(arrayOfCharacters) {
         showHouse(arrayOfCharacters[i].house);
       }
     }
-  }
-  if (arrayOfCharacters[i].name.toLowerCase().indexOf(searchInput) === -1) {
-    alert('Character not found');
-    i = arrayOfCharacters.length;
+    if (arrayOfCharacters[i].name.toLowerCase().indexOf(searchInput) === -1) {
+      alert('Character not found');
+    }
   }
 }
 
